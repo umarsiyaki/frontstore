@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product Calculator</title>
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		/* Add your CSS styles here */
+	</style>
+</head>
+<body>
+	<h1>Product Calculator</h1>
+	<form id="calculator-form">
+		<div id="digit-inputs">
+			<input type="number" id="digit-0" value="0">
+			<input type="number" id="digit-1" value="1">
+			<input type="number" id="digit-2" value="2">
+			<input type="number" id="digit-3" value="3">
+			<input type="number" id="digit-4" value="4">
+			<input type="number" id="digit-5" value="5">
+			<input type="number" id="digit-6" value="6">
+			<input type="number" id="digit-7" value="7">
+			<input type="number" id="digit-8" value="8">
+			<input type="number" id="digit-9" value="9">
+		</div>
+		
+		<div id="arithmetic-symbols">
+			<button id="add-btn">+</button>
+			<button id="subtract-btn">-</button>
+			<button id="multiply-btn">*</button>
+			<button id="divide-btn">/</button>
+			<button id="equals-btn">=</button>
+		</div>
+		
+		<label for="product-name">Product Name:</label>
+		<input type="text" id="product-name" name="product-name"><br><br>
+		
+		<label for="quantity">Quantity:</label>
+		<input type="number" id="quantity" name="quantity"><br><br>
+		
+		<label for="price">Price:</label>
+		<input type="number" id="price" name="price"><br><br>
+		
+		<label for="discount">Discount (%):</label>
+		<input type="number" id="discount" name="discount"><br><br>
+		
+		<div id="input-display">
+			<p>Product Name: <span id="display-product-name"></span></p>
+			<p>Quantity: <span id="display-quantity"></span></p>
+			<p>Price: <span id="display-price"></span></p>
+			<p>Discount: <span id="display-discount"></span></p>
+		</div>
+		
+		<button id="submit-btn">Submit</button>
+		
+		<div id="result"></div>
+	</form>
+	
+	<script src="product_calculator.js"></script>
+</body>
+</html>
