@@ -1,66 +1,18 @@
-Banking on the previous example, here's how you can implement data validation:
+Here's a full version of the Node.js API with realistic features:
 
-_Form Validation_
-
-Create a file called `validation.js` with the following content:
+*bigi-api.js*
 ```
 ```
-_Form Submission_
 
-Update the `form.js` file to include validation:
-```
-```
-In this example, the `validation.js` file contains a function `validateForm` that checks for required fields, email format, and returns an object with error messages. The `form.js` file uses this function to validate the form data before storing it in the database. If errors are found, it returns a 400 response with the error messages.Here is an example of how the file structure could be organized:
+This API includes the following features:
 
-*Server-side files*
+- CORS support for cross-origin requests
+- API endpoint to get product details by name
+- API endpoint to update product details
+- API endpoint to get all products
+- API endpoint to handle orders
+- API endpoint to get order receipt
 
-- `server.js`: Node.js server file that handles form submissions, logs activity, and serves pages
-- `database.db`: SQLite database file that stores form data and activity logs
-- `public/`: Directory containing client-side files
-- `index.html`: Main page that displays product cards and forms
-- `styles.css`: CSS file for styling the page
-- `script.js`: JavaScript file that handles client-side logic and form submissions
+Note that you should replace the database credentials and table names with your own.
 
-*Database schema*
-
-- `forms`: Table that stores form submissions
-- `id` (primary key): Unique identifier for each form submission
-- `name`: Name of the form submitted
-- `data`: JSON data submitted with the form
-- `timestamp`: Timestamp of when the form was submitted
-- `activity`: Table that stores activity logs
-- `id` (primary key): Unique identifier for each activity log
-- `type`: Type of activity (e.g. form submission, page view)
-- `data`: JSON data related to the activity
-- `timestamp`: Timestamp of when the activity occurred
-
-*Server-side code*
-
-In `server.js`, you can use a framework like Express.js to handle form submissions and log activity. Here is an example of how the code could look:
-```
-```
-This code sets up an Express.js server that listens for form submissions and activity logs, and stores them in the `database.db` file. It also serves the client-side files in the `public/` directory.
-
-
-Here's an advanced example of data storage, posting, and form submission with database interaction using Node.js, Express.js, and SQLite:
-
-*Database Schema*
-
-Create a file called `schema.sql` with the following content:
-```
-
-```
-*Database Connection*
-
-Create a file called `db.js` with the following content:
-```
-```
-*Form Submission*
-
-Create a file called `form.js` with the following content:
-```
-```
-```
-This example uses Node.js, Express.js, and SQLite to store form data and activity logs in a database. The `form.js` file handles form submissions, validates data, and stores it in the database. The `server.js` file sets up the server and routes form submissions to the `form.js` file.
-
-Note: This is just an example and you should consider security measures such as input validation, sanitization, and error handling in a real-world application.
+Also, make sure to test the API using tools like Postman or cURL.

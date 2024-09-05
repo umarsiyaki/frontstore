@@ -51,7 +51,7 @@ app.post('/login', (req, res) => {
           res.send({ message: 'Logged in successfully', token });
         } else {
           res.status(401).send({ message: 'Invalid password' });
-        }
+         }
       } else {
         res.status(404).send({ message: 'User not found' });
       }

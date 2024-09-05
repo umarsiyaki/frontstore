@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  
+<style>
+.vendor-selection, .product-selection {
+margin-bottom: 20px;
+}
+
+.form-control {
+width: 100%;
+padding: 10px;
+font-size: 16px;
+}
+
+.product-details {
+margin-top: 20px;
+}
+
+.size-section, .price-section, .image-section {
+margin-bottom: 10px;
+}
+
+#product-image {
+max-width: 100%;
+height: auto;
+}
+
+.btn-primary {
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+}
+
+.btn-primary:hover {
+background-color: #45a049;
+}</style>
+</head>
+<body>
+  
+  
+  
+  
+  
+<div class="vendor-selection">
+  <label for="vendor-dropdown">Select a Vendor:</label>
+  <select id="vendor-dropdown" class="form-control">
+    <option value="">Select a vendor</option>
+    <option value="coca-cola">Coca-Cola</option>
+    <option value="viju">Viju</option>
+    <!-- Add more vendor options here -->
+  </select>
+</div>
+
+<div class="product-selection">
+  <label for="product-dropdown">Select a Product:</label>
+  <select id="product-dropdown" class="form-control">
+    <!-- Product options will be populated dynamically -->
+  </select>
+</div>
+
+<div class="product-details">
+  <div class="size-section">
+    <label>Size:</label>
+    <span id="size"></span>
+  </div>
+  <div class="price-section">
+    <label>Price:</label>
+    <span id="price"></span>
+  </div>
+  <div class="image-section">
+    <img id="product-image" src="" alt="">
+  </div>
+</div>
+
+<button id="submit-btn" class="btn btn-primary">Submit</button>
+<script>
+  
+const vendorDropdown = document.getElementById('vendor-dropdown');
+const productDropdown = document.getElementById('product-dropdown');
+const sizeSection = document.getElementById('size');
+const priceSection = document.getElementById('price');
+const imageSection = document.getElementById('product-image');
+const submitBtn = document.getElementById('submit-btn');
+
+// Populate vendor dropdown options
+const vendors = ['coca-cola', 'viju', 'big', 'bigi', 'slim', 'pepsi', 'maltina', 'climax', 'lucozade'];
+vendors.forEach((vendor) => {
+const option = document.createElement('option');
+option.value = vendor;
+option.text = vendor.charAt(0).toUpperCase() + vendor.slice(1);
+vendorDropdown.appendChild(option);
+});
+
+// Add event listener to vendor dropdown
+vendorDropdown.addEventListener('change', (event) => {
+const selectedVendor = event.target.value;
+// Load related products for the selected vendor
+loadProducts(selectedVendor);
+});
+
+// Load products for the selected vendor
+function loadProducts(vendor) {
+// TO DO: Fetch products from database or API based on the selected vendor
+const products = []; // Replace with actual product data
+productDropdown.innerHTML = '';
+products.forEach((product) => {
+const option = document.createElement('option');
+option.value = (link unavailable);
+option.text = product.name;
+productDropdown.appendChild(option);
+});
+}
+
+// Add event listener to product dropdown
+productDropdown.addEventListener('change', (event) => {
+const selectedProduct = event.target.value;
+// Update size, price, and image sections based on the selected product
+updateProductDetails(selectedProduct);
+});
+
+// Update product details
+function updateProductDetails(productId) {
+// TO DO: Fetch product details from database or API based on the selected product ID
+const productDetails = {}; // Replace with actual product details
+sizeSection.textContent = `Size: ${productDetails.size}`;
+priceSection.textContent = `Price: ${productDetails.price}`;
+imageSection.src = productDetails.image;
+}
+
+// Handle form submission
+submitBtn.addEventListener('click', (event) => {
+event.preventDefault();
+
+
+
+});
+
+
+// Handle form submission
+submitBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  // Validate inputs
+  const vendor = vendorDropdown.value;
+  const product = productDropdown.value;
+
+  if (!vendor || !product) {
+    alert('Please select a vendor and product');
+    return;
+  }
+
+  // Redirect to related vendor page and update store page
+  const vendorPageUrl = `/vendors/${vendor}`;
+  const productData = { vendor, product };
+
+  fetch('/api/store', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(productData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        window.location.href = vendorPageUrl;
+      } else {
+        alert('Error updating store');
+      }
+    })
+    .catch((error) => console.error('Error:', error));
+});
+// API endpoint to update store
+app.post('/api/store', (req, res) => {
+  const { vendor, product } = req.body;
+
+  // Update store logic here (e.g., database update)
+  // For demonstration purposes, assume update is successful
+  res.json({ success: true });
+});
+
+
+Here's an updated version with actual logic for updating the store, database update, and API calls in `/api/store`:
+
+Server-side (e.g., Node.js and Express):
+```
+// Import required modules
+const express = require('express');
+const app = express();
+const mysql = require('mysql');
+
+// Connect to the database
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'username',
+  password: 'password',
+  database: 'oladayo',
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error('error connecting:', err);
+    return;
+  }
+  console.log('connected as id ' + db.threadId);
+});
+
+// API endpoint to update store
+app.post('/api/store', (req, res) => {
+  const { vendor, product } = req.body;
+
+  // Update store logic here (e.g., database update)
+  const query = 'INSERT INTO store (vendor, product) VALUES (?, ?)';
+  db.query(query, [vendor, product], (err, results) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'Error updating store' });
+    } else {
+      res.json({ success: true, message: 'Store updated successfully </script>
+
+
+</body>
+</html>
